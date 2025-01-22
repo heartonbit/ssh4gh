@@ -1,0 +1,12 @@
+LICENSE
+README.md
+setup.py
+ssh4gh/__init__.py
+ssh4gh/cli.py
+ssh4gh.egg-info/PKG-INFO
+ssh4gh.egg-info/SOURCES.txt
+ssh4gh.egg-info/dependency_links.txt
+ssh4gh.egg-info/entry_points.txt
+ssh4gh.egg-info/requires.txt
+ssh4gh.egg-info/top_level.txt
+ssh4gh/scripts/ssh4gh.sh

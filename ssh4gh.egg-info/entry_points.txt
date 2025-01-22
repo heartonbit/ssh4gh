@@ -1,0 +1,2 @@
+[console_scripts]
+ssh4gh = ssh4gh.cli:main
