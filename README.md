@@ -28,6 +28,12 @@ source venv/bin/activate
 pip install ssh4gh
 ```
 
+### Installation from GitHub
+
+```bash
+pip install git+https://github.com/heartonbit/ssh4gh.git
+```
+
 ### Development Installation
 
 ```bash
