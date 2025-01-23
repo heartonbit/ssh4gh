@@ -1,6 +1,6 @@
 # SSH4GH - GitHub SSH Key Manager
 
-A command-line tool to manage GitHub SSH keys easily.
+A bash command-line tool to manage GitHub SSH keys easily.
 
 ## Features
 
