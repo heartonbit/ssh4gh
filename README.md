@@ -55,7 +55,10 @@ pip install -e .
 # List local SSH keys
 ssh4gh list
 
-# Add new SSH key
+# Create new SSH key locally
+ssh4gh create <email> <key_name>
+
+# Add new SSH key to GitHub
 ssh4gh add <github_token> <email> <key_name> [github_username]
 
 # List SSH keys including GitHub keys
@@ -65,6 +68,7 @@ ssh4gh list <github_token>
 ssh4gh delete <key_name>
 
 # Examples
+ssh4gh create your@email.com local_key
 ssh4gh add ghp_xxxxxxxxxxxx your@email.com github_key username
 ssh4gh list ghp_xxxxxxxxxxxx
 ssh4gh delete github_key

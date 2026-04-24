@@ -17,11 +17,18 @@ def get_script_path():
 @click.argument('key_name')
 @click.argument('github_username', required=False)
 def add(token, email, key_name, github_username):
-    """Add new SSH key"""
+    """Add new SSH key to GitHub"""
     cmd = [get_script_path(), 'add', token, email, key_name]
     if github_username:
         cmd.append(github_username)
     subprocess.run(cmd)
+
+@cli.command()
+@click.argument('email')
+@click.argument('key_name')
+def create(email, key_name):
+    """Generate new SSH key locally"""
+    subprocess.run([get_script_path(), 'create', email, key_name])
 
 @cli.command()
 @click.argument('github_token', required=False)

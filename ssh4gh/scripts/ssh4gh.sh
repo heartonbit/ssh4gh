@@ -39,7 +39,8 @@ show_help() {
     echo "Usage: $(basename $0) [options] <command> [arguments]"
     echo ""
     echo "Commands:"
-    echo "  add <token> <email> <key_name> [github_username]  Add new SSH key"
+    echo "  create <email> <key_name>                        Generate new SSH key"
+    echo "  add <token> <email> <key_name> [github_username]  Add new SSH key to GitHub"
     echo "  list [github_token]                              List all SSH keys"
     echo "  delete <key_name>                                Delete SSH key"
     echo ""
@@ -209,6 +210,31 @@ done
 # Parse commands
 command=$1
 case $command in
+    create)
+        shift
+        if [ -z "$1" ] || [ -z "$2" ]; then
+            show_help
+            exit 1
+        fi
+        EMAIL=$1
+        KEY_NAME=$2
+
+        # Check if key already exists
+        if [ -f ~/.ssh/${KEY_NAME} ]; then
+            echo "Error: SSH key '~/.ssh/${KEY_NAME}' already exists"
+            exit 1
+        fi
+
+        # generate ssh key
+        echo "Generating SSH key..."
+        ssh-keygen -t ed25519 -C "${EMAIL}" -q -N "" -f ~/.ssh/${KEY_NAME}
+        eval "$(ssh-agent -s)"
+        ssh-add ~/.ssh/${KEY_NAME}
+
+        echo "SSH key has been successfully generated!"
+        echo "Private key location: ~/.ssh/${KEY_NAME}"
+        echo "Public key location: ~/.ssh/${KEY_NAME}.pub"
+        ;;
     add)
         shift
         if [ -z "$1" ] || [ -z "$2" ] || [ -z "$3" ]; then

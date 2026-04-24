@@ -1,9 +1,15 @@
 from setuptools import setup, find_packages
 import os
 
+import shutil
+import sys
+
 def read(fname):
     with open(os.path.join(os.path.dirname(__file__), fname)) as f:
         return f.read()
+
+if not shutil.which("docker"):
+    sys.exit("Error: Docker is required to install and run ssh4gh. Please install Docker first.")
 
 setup(
     name="ssh4gh",
